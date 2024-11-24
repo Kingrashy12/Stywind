@@ -31,7 +31,7 @@
     "url": "https://github.com/Kingrashy12/Stywind/issues"
   },
   "homepage": "https://github.com/Kingrashy12/Stywind#readme",
-  "description": "Style it your way, with Tailwind. A dynamic Tailwind CSS styling library for React.",
+  "description": "**Style it your way, with Tailwind.** A lightweight, powerful library designed to streamline dynamic styling",
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
