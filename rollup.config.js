@@ -44,7 +44,6 @@ export default {
     }),
     esbuild({
       minify: true,
-      tsconfig: "./tsconfig.json",
     }),
     visualizer({ open: true, filename: "bundle-analysis.html" }),
   ],

@@ -8,12 +8,18 @@
   "exports": {
     ".": {
       "import": "./dist/stywind.es.js",
-      "require": "./dist/stywind.cjs.js",
+      "require": "./dist/stywind.cjs",
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "dist/types"
+  ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "release": "gh release create v0.1.0 --title 'Release v0.1.0' --notes '$(git log -1 --pretty=%B)'",
+    "check": "git log -1 --pretty=%B"
   },
   "repository": {
     "type": "git",

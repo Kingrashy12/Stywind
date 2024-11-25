@@ -27,11 +27,11 @@ export const defineClass = (className: TailwindClass) => className;
  * const data = { solid: "bg-blue-500", outline: "border border-gray-500" };
  * merge(data, "solid"); // Returns: "bg-blue-500"
  */
-export const merge = (data: any, condition: string) => {
+export const merge = (data: any, condition: string): string => {
   if (typeof condition !== "string")
     throw new Error(
       `Expected a string, but received ${typeof condition}. Please input a string value for the condition.`
     );
-  if (!data[condition]) throw new Error(`No data found for ${condition}`);
+  if (!data[condition]) console.error(`No data found for ${condition}`);
   return data[condition];
 };
