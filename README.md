@@ -45,10 +45,12 @@ yarn add stywind
 
 Once installed, you can start using `Stywind` to create styled components dynamically with Tailwind CSS classes.
 
-```bash
-import { createStyle } from 'stywind';
+```typescript
+import { createStyle } from "stywind";
 
-const Button = createStyle('button').classname('bg-blue-500 text-white p-3 rounded-full');
+const Button = createStyle("button").classname(
+  "bg-blue-500 text-white p-3 rounded-full"
+);
 
 const App = () => {
   return <Button>Click me</Button>;
@@ -67,29 +69,62 @@ The `tw` function is a utility that allows you to dynamically combine multiple T
 
 **Example**
 
-```bash
-const buttonClass = tw("bg-blue-500", isActive ? "border border-blue-700": "");
+```typescript
+const buttonClass = tw("bg-blue-500", isActive ? "border border-blue-700" : "");
 // If isActive is true, buttonClass will be "bg-blue-500 border border-blue-700".
 // If isActive is false, buttonClass will be "bg-blue-500".
 ```
 
-2. Using `merge`
+2. Using `merge` **-** **"No magic spells or secret handshakes required!" 🧙**
 
 The `merge` function allows you to conditionally apply different sets of Tailwind CSS classes based on dynamic data. It is particularly useful when you need to merge variant styles or make conditional style assignments based on props or other state variables.
 
 **Example**
 
-```bash
+You can use the `merge` function to conditionally pick and combine CSS classes based on the state or props, such as applying different button styles based on a variant value.
+
+**Single-level Merge Example**
+
+For single-level merges, you can directly access the values based on a key:
+
+```typescript
 const buttonClasses = {
   solid: defineClass("bg-blue-500 border-none outline-none"),
   outline: defineClass("bg-transparent border border-neutral-800"),
 };
+
 const variant = "solid"; // This could be a prop or state value.
-const className = merge(buttonClasses, variant);
+
+const className = merge.single(buttonClasses, variant);
 // If the variant is "solid", className will be "bg-blue-500 border-none outline-none".
 ```
 
-Both `tw` and `merge` provide powerful ways to apply dynamic styling to your components, enabling more flexible, maintainable, and conditional styling logic in your React projects.
+**Multi-level Merge Example**
+
+For multi-level merges, you can access deeper properties using two levels of keys:
+
+```typescript
+const buttonClass = {
+  light: {
+    solid: defineClass("bg-blue-500"),
+    outline: defineClass("border border-gray-500"),
+  },
+  dark: {
+    solid: defineClass("bg-blue-700"),
+    outline: defineClass("border border-gray-800"),
+  },
+};
+
+const theme = "light"; // The primary theme condition.
+const variant = "solid"; // The style variant.
+
+const className = merge.multi(buttonClass, theme, variant);
+// If the theme is "light" and variant is "solid", className will be "bg-blue-500".
+```
+
+In this case, the `merge.multi` function allows you to access nested styles, first selecting the theme (e.g., `light` or `dark`) and then choosing a variant (e.g., `solid` or `outline`).
+
+**Both `tw` and `merge` provide powerful ways to apply dynamic styling to your components, enabling more flexible, maintainable, and conditional styling logic in your React projects.**
 
 # Api Reference
 
@@ -127,8 +162,8 @@ Applies Tailwind classes to the created component. Can accept a string of class 
 
 **Example**
 
-```bash
-const buttonClass = tw("bg-blue-500", isActive ? "border border-blue-700":"");
+```typescript
+const buttonClass = tw("bg-blue-500", isActive ? "border border-blue-700" : "");
 // If isActive is true, buttonClass will be "bg-blue-500 border border-blue-700".
 // If isActive is false, buttonClass will be "bg-blue-500".
 ```
@@ -137,28 +172,15 @@ const buttonClass = tw("bg-blue-500", isActive ? "border border-blue-700":"");
 
 - **Parameters:**
 
-  - `data` `(any)`: The object containing the variant data.
+  - `data` `(any)`: The object containing the variant data. It can be a simple object with key-value pairs or a more complex object with nested structures.
   - `condition` `(string)`: A string representing the key within the data object to fetch the corresponding styles.
+  - `rt_condition` `(any)`: The secondary condition used in `merge.multi` for more complex, multi-level conditions. This is the key in the nested object for which to retrieve the corresponding styles.
 
 - **Returns:**
 
   - `(string)`: The Tailwind CSS class for the given condition.
 
-**Example**
-
-```bash
-const buttonClasses = {
-  solid: "bg-blue-500 border-none outline-none",
-  outline: "bg-transparent border border-neutral-800",
-};
-const condition = "solid";
-const className = merge(buttonClasses, condition);
-// Returns: "bg-blue-500 border-none outline-none"
-```
-
 `defineClass`
-
-**"No magic spells or secret handshakes required!" 🧙**
 
 A utility function that's got your back, offering autocomplete suggestions for your class inputs, making it a breeze to define custom Tailwind CSS classes.
 
@@ -172,7 +194,7 @@ A utility function that's got your back, offering autocomplete suggestions for y
 
 **Example**
 
-```bash
+```typescript
 const solidClass = defineClass("bg-blue-500 border-none outline-none");
 // Returns: "bg-blue-500 border-none outline-none"
 ```
