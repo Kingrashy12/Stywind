@@ -81,8 +81,8 @@ The `merge` function allows you to conditionally apply different sets of Tailwin
 
 ```bash
 const buttonClasses = {
-  solid: "bg-blue-500 border-none outline-none",
-  outline: "bg-transparent border border-neutral-800",
+  solid: defineClass("bg-blue-500 border-none outline-none"),
+  outline: defineClass("bg-transparent border border-neutral-800"),
 };
 const variant = "solid"; // This could be a prop or state value.
 const className = merge(buttonClasses, variant);
@@ -158,7 +158,9 @@ const className = merge(buttonClasses, condition);
 
 `defineClass`
 
-A utility function that returns the provided class name. It is used for defining custom Tailwind CSS classes that can be applied to React components.
+**"No magic spells or secret handshakes required!" 🧙**
+
+A utility function that's got your back, offering autocomplete suggestions for your class inputs, making it a breeze to define custom Tailwind CSS classes.
 
 - **Parameters:**
 

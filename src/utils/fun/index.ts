@@ -2,7 +2,7 @@ type TailwindClass = string;
 
 /**
  * A utility function for defining custom Tailwind CSS class names.
- * Provides type safety and ensures valid Tailwind CSS classes are used.
+ * Provides autocomplete suggestions for your class inputs
  *
  * @param className - A valid Tailwind CSS class.
  * @returns string
