@@ -1,6 +1,6 @@
 {
   "name": "stywind",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "main": "dist/stywind.cjs",
   "module": "dist/stywind.es.js",
   "types": "dist/index.d.ts",
@@ -26,10 +26,9 @@
     "url": "git+https://github.com/Kingrashy12/Stywind.git"
   },
   "keywords": [
-    "tailwind",
+    "tailwindcss",
     "react",
-    "styling",
-    "dynamic"
+    "styling"
   ],
   "author": "Rapheal Chizitere",
   "license": "Apache-2.0",
