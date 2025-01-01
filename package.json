@@ -1,6 +1,6 @@
 {
   "name": "stywind",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "dist/stywind.cjs",
   "module": "dist/stywind.es.js",
   "types": "dist/index.d.ts",
@@ -17,9 +17,7 @@
     "dist/types"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "release": "gh release create v0.1.0 --title 'Release v0.1.0' --notes '$(git log -1 --pretty=%B)'",
-    "check": "git log -1 --pretty=%B"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
