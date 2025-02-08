@@ -30,7 +30,7 @@ const createStyle = <
       : T extends React.ComponentType<infer P>
       ? P & ExtraProps
       : ExtraProps;
-    const Component = React.forwardRef<unknown, Props>((props, ref) => {
+    const Component = React.forwardRef<T, Props>((props, ref) => {
       const prefixedProps =
         typeof tag === "string"
           ? {
@@ -44,7 +44,7 @@ const createStyle = <
         className: tw(classname, props.className),
       });
     });
-    Component.displayName = `Styled(${tag})/`;
+    Component.displayName = `Styled/(${tag})`;
     return Component;
   },
 });
