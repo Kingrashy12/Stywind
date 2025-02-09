@@ -1,6 +1,6 @@
 {
   "name": "stywind",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "dist/stywind.cjs",
   "module": "dist/stywind.es.js",
   "types": "dist/index.d.ts",

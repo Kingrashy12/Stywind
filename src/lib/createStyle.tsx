@@ -44,7 +44,8 @@ const createStyle = <
         className: tw(classname, props.className),
       });
     });
-    Component.displayName = `Styled/(${tag})`;
+    Component.displayName =
+      typeof tag === "string" ? `Styled-${tag}` : "Styled";
     return Component;
   },
 });
